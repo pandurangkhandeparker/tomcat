@@ -33,10 +33,11 @@ jobs:
       matrix:
         java: [ 17, 19, 20-ea ]
         os: [ ubuntu-latest ]
+        arch: [s390x]
         include:
         - os: windows-latest
           java: 17
-    name: JDK${{ matrix.java }} ${{ matrix.os }}
+    name: JDK${{ matrix.java }} ${{ matrix.os }} ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
@@ -59,3 +60,6 @@ jobs:
         name: JDK${{ matrix.java }}-${{ matrix.os }}-logs
         path: output/build/logs/TEST*.txt
         retention-days: 7
+    - name: Create binary
+      run: |
+        ant release -DskipTests -Dbuild.native=true -Dskip.installer=true -Dplatform=s390x
