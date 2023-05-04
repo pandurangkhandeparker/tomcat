@@ -60,6 +60,4 @@ jobs:
         name: JDK${{ matrix.java }}-${{ matrix.os }}-logs
         path: output/build/logs/TEST*.txt
         retention-days: 7
-    - name: Create binary
-      run: |
-        ant release -DskipTests -Dbuild.native=true -Dskip.installer=true -Dplatform=s390x
+    
