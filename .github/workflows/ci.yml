@@ -49,6 +49,7 @@ jobs:
         distribution: zulu
         architecture: ${{ matrix.arch }}
     - name: Build
+    - uses: uraimo/run-on-arch-action@v2
       with: 
         arch: ${{ matrix.arch }}
         run: |
@@ -63,6 +64,4 @@ jobs:
         name: JDK${{ matrix.java }}-${{ matrix.os }}-${{ matrix.arch }}-logs
         path: output/build/logs/TEST*.txt
         retention-days: 7
-    - name: NoName
-      run: |
-          echo "Hello, World!"
+   
