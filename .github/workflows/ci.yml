@@ -47,7 +47,7 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
         distribution: zulu
-        arch: ${{ matrix.arch }}
+        architecture: ${{ matrix.arch }}
     - name: Build
       run: |
         ant -noinput echoproperties deploy embed test-nio test-status
