@@ -49,7 +49,7 @@ jobs:
         distribution: zulu
         architecture: ${{ matrix.arch }}
     - name: Build
-    - uses: uraimo/run-on-arch-action@v2
+      uses: uraimo/run-on-arch-action@v2
       with: 
         arch: ${{ matrix.arch }}
         run: |
