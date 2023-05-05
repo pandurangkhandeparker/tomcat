@@ -32,11 +32,12 @@ jobs:
       fail-fast: false
       matrix:
         java: [ 17, 19, 20-ea ]
-        os: [ ubuntu-latest, ubuntu-22.04-s390x ]
+        os: [ ubuntu-latest ]
+        arch: [amd64, s390x]
         include:
         - os: windows-latest
           java: 17
-    name: JDK${{ matrix.java }} ${{ matrix.os }} 
+    name: JDK${{ matrix.java }} ${{ matrix.os }} ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
@@ -46,6 +47,7 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
         distribution: zulu
+        architecture: ${{ matrix.arch }}
     - name: Build
       run: |
         ant -noinput echoproperties deploy embed test-nio test-status
