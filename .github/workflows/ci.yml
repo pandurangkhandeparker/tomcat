@@ -33,9 +33,8 @@ jobs:
       matrix:
         java: [ 17, 19, 20-ea ]
         os: [ ubuntu-latest ]
+        arch: [s390x]
         include:
-        - arch: s390x
-          distro: ubuntu_latest
         - os: windows-latest
           java: 17
     name: JDK${{ matrix.java }} ${{ matrix.os }} ${{ matrix.arch }}
@@ -53,7 +52,7 @@ jobs:
       uses: uraimo/run-on-arch-action@v2
       with:
         arch: ${{ matrix.arch }}
-        distro: ${{ matrix.distro }}
+        distro: ${{ matrix.os }}
         run: |
           ant -noinput echoproperties deploy embed test-nio test-status
         env: |
