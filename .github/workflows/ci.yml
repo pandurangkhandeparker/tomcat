@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ 11, 17 ]
+        java: [ 17, 19 ]
         os: [ ubuntu-latest ]
         include:
           - arch: s390x
@@ -106,7 +106,7 @@ jobs:
               ubuntu*)
                 apt-get update -q -y
                 apt-get install -q -y --reinstall coreutils
-                apt-get install -q -y git  openjdk-${{ matrix.java }}-jdk ant
+                apt-get install -q -y git openjdk-${{ matrix.java }}-jdk ant
                 ;;
             esac
 
