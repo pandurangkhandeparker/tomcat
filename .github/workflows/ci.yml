@@ -112,9 +112,9 @@ jobs:
           install: |
             case "${{ matrix.distro }}" in
               ubuntu*)
-                apt-get update -q -y
-                apt-get install -q -y git openjdk-${{ matrix.java }}-jdk ant
                 su root
+                apt-get update -q -y
+                apt-get install -q -y git build-essential openjdk-${{ matrix.java }}-jdk ant automake autoconf libssl-dev libtool-bin
                 ;;
             esac
         # Run tests in the container
