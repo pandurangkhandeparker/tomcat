@@ -119,10 +119,7 @@ jobs:
         # Run tests in the container
           run: |
             cd /tomcat
-            ant -noinput echoproperties deploy embed test-nio test-status 
-            
-      continue-on-error:
-        true
+            ant -noinput echoproperties deploy embed test-nio test-status             
         
     - name: Upload logs
       uses: actions/upload-artifact@v3
