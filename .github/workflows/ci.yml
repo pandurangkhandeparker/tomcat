@@ -82,7 +82,7 @@ jobs:
         distribution: zulu
         architecture: ${{ matrix.arch }}
     - name: Run on non x86 architecture
-      uses: uraimo/run-on-arch-action@v2.5.0
+      uses: uraimo/run-on-arch-action@v2.3.0
       continue-on-error: true
       with:
           arch: ${{ matrix.arch }}
@@ -92,7 +92,7 @@ jobs:
           githubToken: ${{ github.token }}
 
           setup: |
-            mkdir -p "${PWD}/tomcat"
+            mkdir -p "${PWD}/tomcat-test"
 
           dockerRunArgs: |
             --volume "${PWD}:/tomcat"
@@ -112,13 +112,13 @@ jobs:
           install: |
             case "${{ matrix.distro }}" in
               ubuntu*)
-                su root
                 apt-get update -q -y
                 apt-get install -q -y git build-essential openjdk-${{ matrix.java }}-jdk ant automake autoconf libssl-dev libtool-bin
                 ;;
             esac
         # Run tests in the container
           run: |
+            su root
             cd /tomcat
             ant -noinput echoproperties deploy embed test-nio test-status             
         
