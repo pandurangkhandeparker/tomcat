@@ -1447,8 +1447,6 @@
     </xslt>
   </target>
 
-  <taskdef resource="net/sf/antcontrib/antlib.xml" />
-
   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
           description="Default. Builds a working Tomcat instance">
 
@@ -1470,7 +1468,7 @@
       </fileset>
     </copy>
     <!-- Copy doesn't retain permissions -->
-    <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/>
+<!--     <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/> -->
 
     <!-- Copy static resource files -->
     <copy todir="${tomcat.build}/conf" encoding="ISO-8859-1">
