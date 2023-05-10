@@ -1447,6 +1447,8 @@
     </xslt>
   </target>
 
+  <taskdef resource="net/sf/antcontrib/antlib.xml" />
+
   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
           description="Default. Builds a working Tomcat instance">
 
