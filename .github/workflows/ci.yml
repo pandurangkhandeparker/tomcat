@@ -98,6 +98,7 @@ jobs:
             --volume "${PWD}:/tomcat"
             --memory 8G
             --privileged
+            --platform linux/s390x
           
           # Pass some environment variables to the container
           env: | # YAML, but pipe character is necessary
